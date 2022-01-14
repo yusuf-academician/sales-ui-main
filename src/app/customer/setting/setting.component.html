@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="container-header">
+    <p class="container-header-body">Account Settings</p>
+  </div>
+  <div class="container-body">
+    <p class="container-body-body">Change Name</p>
+    <form class="form" autocomplete="off" [formGroup]="changeName" (ngSubmit)="onSaveUsername()">
+      <div class="form__group">
+        <label for="email" class="form__label">Name</label>
+        <input type="name" class="form__input form-control" placeholder="Name" id="name" name="name" formControlName="name" required
+          type="text" [ngClass]="{ 'is-invalid': isName && d.name.errors }" />
+        <div *ngIf="d.name.errors" class="invalid-feedback">
+          <div *ngIf="d.name.errors.required">name is required</div>
+        </div>
+      </div>
+      <button class="form-button">Save</button>
+    </form>
+  </div>
+</div>

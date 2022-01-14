@@ -1,0 +1,24 @@
+@import "../../sass/text";
+@import "../../sass/vairable";
+@import "../../sass/main";
+@import "../../sass/button";
+
+
+
+.view {
+  @include button(#007bff, $white-color, #0069d9);
+
+  &-button {
+    border-radius: 9px;
+    padding: 1.2rem 1rem;
+    font-size: 1.3rem
+  }
+}
+
+.table {
+  @include text(5px, center, 100%);
+
+  &-body {
+    width: fit-content;
+  }
+}

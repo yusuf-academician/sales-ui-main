@@ -1,0 +1,73 @@
+<div class="container">
+  <p class="container-body">Carts</p>
+  <div class="container-box" *ngIf="!carts.length">
+    <p class="container-box-header">Your cart is empty.</p>
+    <p class="container-box-body">
+      Browser our category and dsicover our best deals
+    </p>
+    <a class="container-box-button" [routerLink]="'/home'">Start Shopping</a>
+  </div>
+  <div class="container-items" *ngIf="carts.length">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cart of carts">
+          <td class="extra-width">
+            <div class="container-items-item">
+              <img class="container-items-item-image" src="{{ cart?.menu?.image?.URL }}" />
+              <div class="container-items-item-details">
+                <p>Shop: {{ cart?.menu?.shop?.name }}</p>
+                <p>{{ cart?.menu?.name }}</p>
+                <p>Category: {{ cart?.menu?.category?.category }}</p>
+                <p>
+                  Ingredients:
+                  <span *ngFor="let ingredient of cart?.menu?.ingredients">
+                    {{ ingredient?.ingredient?.ingredient }},
+                  </span>
+                </p>
+                <button class="container-items-item-button" (click)="removeCart(cart?._id)">
+                  Remove
+                </button>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p>
+              <span class="badge" (click)="updateCart(cart?._id, cart?.quantity, 'add')">+</span>
+              {{ cart?.quantity }}
+              <span class="badge" (click)="updateCart(cart?._id, cart?.quantity, 'subtract')">-</span>
+            </p>
+          </td>
+          <td>{{ cart?.menu?.currency }}{{ cart?.menu?.price }}</td>
+          <td>
+            {{ cart?.menu?.currency
+            }}{{ calculate(cart.amount, cart.quantity) }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container-items-bottom">
+      <p>Cumaltive Calories: {{ calories }}{{ caloriesUnit }}</p>
+      <p class="container-items-bottom-body">
+        Total:
+        <span class="container-items-bottom-header">{{ currency }}{{ total }}</span>
+      </p>
+      <div>
+        <a class="container-items-bottom-white-button" [routerLink]="'/home'">Continue Shopping</a>
+        <button
+          (click)="proceedToCheckout()"
+          class="container-items-bottom-button"
+        >
+          Proceed to checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

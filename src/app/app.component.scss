@@ -1,0 +1,22 @@
+@import './sass/navigation';
+@import './sass/footer';
+
+.badge {
+  display: inline-block;
+  font-size: 1rem;
+  text-align: center;
+  font-family: $font-primary;
+  margin: 0;
+  color: #fff;
+  background-color: #F05537;
+  position: absolute;
+  padding: 3px 1px;
+  border-radius: 50%;
+  width: 1.5rem;
+  top: -0.7rem;
+  left: 1rem;
+  height: 1.5rem;
+  @media only screen and (max-width: $mobile-small){
+    padding: 1px 1px;
+  }
+}

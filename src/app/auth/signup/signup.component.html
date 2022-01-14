@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="container-row">
+    <form
+      autocomplete="off"
+      [formGroup]="sign"
+      class="form"
+      (ngSubmit)="signUp()"
+    >
+      <p class="container-row-header">Create Account</p>
+      <p *ngIf="isError" class="login-body">{{ errorStatment }}</p>
+      <div class="form__group">
+        <label for="name" class="form__label">Name </label>
+        <input
+          type="text"
+          class="form-control form__input"
+          id="name"
+          placeholder="name"
+          name="name"
+          formControlName="name"
+          [ngClass]="{ 'is-invalid': submitSignUp && f.name.errors }"
+          required
+          autofocus
+        />
+        <div *ngIf="f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">name is required</div>
+        </div>
+      </div>
+      <div class="form__group">
+        <label for="email" class="form__label">Email address</label>
+        <input
+          type="email"
+          class="form-control form__input"
+          placeholder="name@example.com"
+          id="email"
+          name="email"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitSignUp && f.email.errors }"
+        />
+        <div *ngIf="f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">email is required</div>
+          <div *ngIf="f.email.errors.email">Invalid email address</div>
+        </div>
+      </div>
+      <div class="form__group">
+        <label for="phoneNumber" class="form__label">Phone Number</label>
+        <input
+          type="text"
+          class="form-control form__input"
+          placeholder="phone number"
+          id="phoneNumber"
+          required
+          name="phoneNumber"
+          formControlName="phoneNumber"
+          [ngClass]="{
+            'is-invalid': submitSignUp && f.phoneNumber.errors
+          }"
+        />
+        <div *ngIf="f.phoneNumber.errors" class="invalid-feedback">
+          <div *ngIf="f.phoneNumber.errors.required">phone number is required</div>
+        </div>
+      </div>
+      <div class="form__group">
+        <label for="age" class="form__label">Gender</label>
+        <select
+          id="gender"
+          class="form__input form-select"
+          formControlName="gender"
+          placeholder="gender"
+          [ngClass]="{ 'is-invalid': submitSignUp && f.gender.errors }"
+        >
+          <option selected>Choose...</option>
+          <option *ngFor="let gender of genders" [ngValue]="gender.key">
+            {{ gender.value }}
+          </option>
+        </select>
+        <div *ngIf="f.gender.errors" class="invalid-feedback">
+          <div *ngIf="f.gender.errors.required">gender is required</div>
+        </div>
+      </div>
+      <div class="form__group">
+        <label for="name" class="form__label">Password</label>
+        <input
+          type="password"
+          class="form-control form__input"
+          placeholder="Password"
+          id="password"
+          required
+          name="password"
+          formControlName="password"
+          [ngClass]="{
+            'is-invalid': submitSignUp && f.password.errors
+          }"
+        />
+        <div *ngIf="f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">password is required</div>
+        </div>
+      </div>
+      <button class="form-button">Sign up</button>
+    </form>
+    <p class="container-row-subheader">Already have an Account?</p>
+    <a class="container-row-body" [routerLink]="['/login']">Login</a>
+  </div>
+</div>

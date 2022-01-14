@@ -1,0 +1,65 @@
+@import '../../sass/text';
+@import '../../sass/vairable';
+@import '../../sass/main';
+
+.container{
+  width: 100%;
+  padding: 0;
+
+  &-header{
+    border-bottom: 1px solid ;
+
+    @include text(5px, left, 100%);
+    &-body{
+      padding: 10px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: $black-color;
+    }
+  }
+
+  &-body{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    @include text(5px, left, 100%);
+  }
+}
+
+.order{
+  width: 100%;
+  height: 29rem;
+  display: flex;
+  margin-bottom: 2rem;
+
+  @media only screen and (max-width: $laptop-medium){
+    width: 100%;
+  }
+
+  &-left{
+    width: 23rem;
+  }
+
+  &-right{
+    width: 68rem;
+    border: 1px solid;
+    padding: 1rem;
+
+    @include text(5px, left, 100%);
+    &-body{
+      text-transform: capitalize;
+      color: $black-color;
+    }
+
+    @media only screen and (max-width: $mobile-large){
+      width: 45rem;
+    }
+
+    &-box {
+      width: 21rem;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

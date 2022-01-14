@@ -1,0 +1,72 @@
+@import '../../sass/text';
+@import '../../sass/vairable';
+@import '../../sass/main';
+@import "../../sass/button";
+
+.container {
+  width: 100%;
+  padding: 1rem;
+}
+
+.detail{
+  display: flex;
+  justify-content: space-between;
+  &-image{
+    width: 20rem;
+    height: 20rem;
+  }
+
+  &-content{
+    width: 76%;
+    height: auto;
+    padding: 1rem;
+    &-mini{
+      display: flex;
+      width: 40rem;
+      justify-content: space-between;
+    }
+    @include text(2px, left, 100%);
+    &-header{
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    &-certificate{
+      display: flex;
+      margin-top: 2rem;
+
+      &-image{
+        height: 15rem;
+        width: 15rem;
+      }
+    }
+
+    &-btn_holder{
+      margin-top: 2rem;
+      float: right;
+      width: 20rem;
+      display: flex;
+      justify-content: space-between
+    }
+  }
+}
+
+.decline {
+  @include button(#dc3545, $white-color, #bb2d3d);
+
+  &-button {
+    border-radius: 8px;
+    padding: 1.2rem 2rem;
+    font-size: 1.3rem
+  }
+}
+
+.approve {
+  @include button(#28a745, $white-color, #218838);
+
+  &-button {
+    border-radius: 9px;
+    padding: 1.2rem 2rem;
+    font-size: 1.3rem
+  }
+}

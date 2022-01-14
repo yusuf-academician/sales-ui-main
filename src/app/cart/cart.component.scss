@@ -1,0 +1,140 @@
+@import '../sass/vairable';
+@import '../sass/text';
+@import '../sass/button';
+
+.container{
+  margin: 2rem auto;
+  width: 70%;
+  @media only screen and (max-width: $tablet-small){
+    width: 90%
+  }
+
+  @include text(0, left, 100%);
+  &-body{
+    color: $black-color;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &-box{
+    margin: 3rem auto;
+    width: 60%;
+    height: 23rem;
+    padding: 4rem;
+    text-align: center;
+    @media only screen and (max-width: $mobile-large){
+      width: 80%
+    }
+    @include text(0, center, 100%);
+    &-body{
+      margin: 2rem 0;
+    }
+
+    @include button(#F05537, $white-color, #d1410c);
+    &-button{
+      text-decoration: none;
+      border-radius: 8px;
+    }
+  }
+
+  &-items{
+    width: 100%;
+
+    &-item{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      @media only screen and (max-width: $mobile-large){
+        flex-direction: column;
+        width: 27rem;
+      }
+      &-image{
+        width: 15rem;
+        height: 15rem;
+        margin-right: 0.5rem;
+      }
+
+      &-button{
+        color: #F05537;
+        font-family: $font-medium;
+        text-transform: capitalize;
+        font-size: 1.6rem;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+      }
+    }
+
+    &-bottom{
+      margin: 3rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      @include button(#F05537, $white-color, #d1410c);
+      &-button{
+        padding: 1rem 1rem;
+        margin-left: 3rem;
+        border-radius: 8px;
+        text-decoration: none;
+      }
+
+      &-white{
+        @include button(#FFFFFF, $black-color, #F5F5F5);
+        &-button{
+          padding: 1rem 1rem;
+          border: 1px solid;
+          border-radius: 8px;
+          text-decoration: none;
+        }
+      }
+
+      &-body{
+        font-family: $font-primary;
+        font-size: 1.6rem;
+        color: #7e7b8a;
+        line-height: 1.5625em;
+        margin-bottom: 2rem;
+      }
+      &-header{
+        font-family: $font-primary;
+        font-size: 4em;
+        text-transform: capitalize;
+        font-weight: 600;
+        color: black;
+        line-height: .9em;
+        letter-spacing: -.02em;
+      }
+    }
+  }
+}
+
+.badge {
+  display: inline-block;
+  font-size: 2rem;
+  text-align: center;
+  font-family: $font-primary;
+  margin: 0;
+  color: #fff;
+  background-color: #F05537;
+  padding: 0 0.2rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+
+  @media only screen and (max-width: $tablet-small){
+    padding: 1px 2px;
+  }
+  @media only screen and (max-width: $mobile-small){
+    padding: 0px 2px;
+  }
+}
+
+.extra-width{
+  width: 57rem;
+  @media only screen and (max-width: $mobile-large){
+    width: 30rem;
+  }
+}

@@ -1,0 +1,97 @@
+<div class="navigation">
+  <div class="navigation-logo">
+    <img class="navigation-logo-image" src="../assets/icon.jpg" />
+    <p class="navigation-logo-body">Cal Point</p>
+  </div>
+  <div class="navigation-box">
+    <form [formGroup]="searchForm">
+      <input
+        type="text"
+        formControlName="name"
+        id="name"
+        placeholder="menu"
+        required
+        matInput
+        (keyup)="searchMenus()"
+        name="name"
+        [matAutocomplete]="auto"
+        [ngClass]="{ 'is-invalid': submit && f.name.errors }"
+        class="navigation-form"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let menu of menus" [value]="menu?.name">
+          <span>{{menu?.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </form>
+    <button class="nav-button" (click)="openPage('/menu')">Search</button>
+  </div>
+  <div class="navigation-nav">
+    <div class="nav">
+      <ul class="nav-list">
+        <li class="nav-items">
+          <a [routerLink]="['/home']">shop</a>
+        </li>
+        <li class="nav-items">
+          <a [routerLink]="['/category']">category</a>
+        </li>
+        <li class="nav-items">
+          <a>account <span>
+            <fa-icon [icon]="down" size="1x"></fa-icon>
+          </span></a>
+          <div class="nav-items-content">
+            <a [routerLink]="['/login']" *ngIf="!isLogged">login</a>
+            <a [routerLink]="['/customer']" *ngIf="isLogged">account</a>
+            <a [routerLink]="['/customer/order']" *ngIf="isLogged">orders</a>
+            <a *ngIf="isLogged" (click)="logout()">Logout</a>
+          </div>
+        </li>
+        <li class="nav-items">
+          <a [routerLink]="['/cart']">
+            <span style="position: relative;">
+              <fa-icon [icon]="cart" size="1x"></fa-icon>
+              <p class="badge" *ngIf="isLogged && carts.length">{{carts.length}}</p>
+            </span>
+            Cart
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<div class="footer">
+  <div class="footer-main">
+    <div class="footer-main-container">
+      <h1 class="footer-main-header">Service</h1>
+      <p class="footer-main-body">customer support</p>
+      <p class="footer-main-body">Report a Product</p>
+    </div>
+    <div class="footer-main-container">
+      <p></p>
+      <p class="footer-main-body">Delivery options</p>
+      <p class="footer-main-body">sales point express</p>
+    </div>
+    <div class="footer-main-container">
+      <h1 class="footer-main-header">Company</h1>
+      <p class="footer-main-body">about us</p>
+      <p class="footer-main-body">wour team</p>
+      <p class="footer-main-body" [routerLink]="['/shop']">Create Shop</p>
+    </div>
+    <div class="footer-main-container">
+      <h1 class="footer-main-header">Get in touch</h1>
+      <p class="footer-main-body">26 Dunmow Road Grindon, United Kingdom</p>
+      <p class="footer-main-body">support@example.com</p>
+      <p class="footer-main-body">+44 077 6581 2227</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>
+      <p class="footer-bottom-last-body">Cal-Point © 2021. All rights reserved.</p>
+    </div>
+    <div class="footer-bottom-last">
+      <p class="footer-bottom-last-body">Privacy</p>
+      <p class="footer-bottom-last-body">terms & conditions</p>
+    </div>
+  </div>
+</div>

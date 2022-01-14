@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="filter">
+    <div class="filter-price">
+      <p class="filter-body">Filter</p>
+      <form class="form" autocomplete="off" [formGroup]="filter">
+        <p class="filter-subheader">price</p>
+        <div class="filter-price-holder">
+          <div>
+            <label class="form__label">Min</label>
+            <input
+              type="text"
+              id="min"
+              formControlName="min"
+              class="form__input"
+              required
+              [ngClass]="{'is-valid': submit && f.min.errors}"
+            />
+          </div>
+          <div>
+            <label class="form__label">Max</label>
+            <input
+            type="text"
+            id="max"
+            formControlName="max"
+            class="form__input"
+            required
+            [ngClass]="{'is-valid': submit && f.max.errors}"
+            />
+          </div>
+        </div>
+        <div>
+          <label  class="form__label">Post Code</label>
+          <input
+            style="width: 97%; margin-bottom: 2rem"
+            class="form__input" required
+            type="text"
+            id="postCode"
+            formControlName="postCode"
+            class="form__input"
+            required
+            [ngClass]="{'is-valid': submit && f.postCode.errors}"
+          />
+        </div>
+      </form>
+    </div>
+    <button class="form-button" (click)="onSubmit()">Filter</button>
+  </div>
+  <div class="container-row">
+    <p class="container-header">Top Selling Items</p>
+    <div class="container-row-box">
+      <ng-container *ngFor="let menu of menus">
+        <div class="container-row-box-item" (click)="openPage('/menu', menu?._id)">
+          <img class="container-row-box-item-image" src='{{menu?.image?.URL}}' />
+          <div class="container-row-box-item-content">
+            <div class="container-row-box-item-content-upper">
+              <p class="container-row-box-item-content-header">{{menu?.name}}</p>
+              <p class="container-row-box-item-content-subheader">{{menu?.currency}}{{menu?.price}}</p>
+            </div>
+            <p class="container-row-box-item-content-body">{{menu?.shop?.name}}</p>
+            <p class="container-row-box-item-content-body">Category: {{menu?.category?.category}}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

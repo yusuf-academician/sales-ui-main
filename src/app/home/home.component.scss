@@ -1,0 +1,135 @@
+@import '../sass/text';
+@import '../sass/main';
+@import '../sass/form';
+
+.container {
+  padding: 3rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+
+  @include text(2px, left, 40rem);
+
+  &-header {
+    font-size: 2rem
+  }
+
+  &-row {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-box {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+
+
+      &-item {
+        width: 20rem;
+        height: 30rem;
+        display: flex;
+        flex-direction: column;
+
+        @media only screen and (max-width: $laptop-small) {
+          width: 31rem;
+          margin-bottom: 2rem;
+        }
+
+        @media only screen and (max-width: $tablet-small) {
+          width: 27rem;
+          margin-bottom: 3rem;
+        }
+
+        &-image {
+          height: 20rem;
+          object-fit: cover;
+        }
+
+        &-content {
+          display: flex;
+          flex-direction: column;
+
+          @include text(2px, left, 100%);
+
+          &-header {
+            line-height: normal;
+            letter-spacing: normal;
+            margin-bottom: 0;
+            font-size: 1.6rem;
+          }
+
+          &-upper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.filter {
+  width: 23rem;
+  margin-right: 3rem;
+  padding: 5px;
+  height: 37rem;
+
+  @include text(0, left, 100%);
+  &-subheader{
+    margin-top: 2rem;
+  }
+
+  &-price{
+    margin-bottom: 2rem;
+    &-holder{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+
+      &-input{
+        width: 8rem;
+        font-size: 15px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 0.5em;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: 0;
+        padding: 5px;
+        border: 1px solid;
+        border-radius: 3px;
+        outline: none;
+      }
+    }
+  }
+}
+
+.form{
+  margin-top: 0;
+
+  &__input{
+    width: 91%;
+    margin-bottom: 0;
+    padding: 5px 1rem;
+    border-radius: 3px
+  }
+
+  &__lable{
+    margin-top: 2rem
+  }
+
+  &-button{
+    border-radius: 8px;
+    width: 60%;
+    padding: 1rem;
+  }
+}

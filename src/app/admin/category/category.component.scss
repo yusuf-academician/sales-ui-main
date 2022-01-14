@@ -1,0 +1,83 @@
+@import '../../sass/text';
+@import '../../sass/vairable';
+@import '../../sass/main';
+@import "../../sass/button";
+@import "../../sass/form";
+
+
+.container {
+    width: 100%;
+    padding: 0;
+
+    &-header {
+        border-bottom: 1px solid;
+
+        @include text(5px, left, 100%);
+        &-body {
+            padding: 10px;
+        }
+    }
+
+    @include button(#198754,$white-color,#157347);
+
+    &-button{
+        width: 12rem;
+        margin-bottom: 2rem;
+        border-radius: 5px;
+        padding: 1.3rem 1.3rem;
+        font-size: 1.3rem;
+    }
+    &-body {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        @include text(5px, left, 100%);
+    }
+
+    &-form{
+        margin: 2rem auto;
+        width: 50rem;
+    }
+}
+
+.form{
+    margin-top: 1rem;
+    &-button{
+        width: 10rem;
+    }
+
+    &__input{
+        width: 30rem;
+    }
+    &__group{
+        margin-bottom: 0;
+    }
+}
+
+.table {
+  @include text(5px, center, 100%);
+
+  &-body {
+    width: fit-content;
+  }
+}
+
+.decline {
+  @include button(#dc3545, $white-color, #bb2d3d);
+
+  &-button {
+    border-radius: 8px;
+    padding: 1.2rem 1rem;
+    font-size: 1.3rem
+  }
+}
+
+.approve {
+  @include button(#337ab7, $white-color,#286090 );
+
+  &-button {
+    border-radius: 9px;
+    padding: 1.2rem 1rem;
+    font-size: 1.3rem
+  }
+}

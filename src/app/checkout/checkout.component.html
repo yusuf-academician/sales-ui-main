@@ -1,0 +1,95 @@
+<div class="container">
+  <p class="checkout-header" *ngIf="!isCheckout">Checkout</p>
+  <p class="checkout-header" *ngIf="isCheckout">Order Summary</p>
+  <div class="checkout" *ngIf="!isCheckout">
+    <div class="checkout-details">
+      <p class="checkout-header">Delivery Details</p>
+      <div class="checkout-details-body">
+        <div>
+          <p class="checkout-details-body-header">Name</p>
+          <p class="checkout-details-body-body">{{user?.name}}</p>
+        </div>
+        <div>
+          <p class="checkout-details-body-header">Email Address</p>
+          <p class="checkout-details-body-body">{{user?.email}}</p>
+        </div>
+        <div>
+          <p class="checkout-details-body-header">Phone Number</p>
+          <p class="checkout-details-body-body">{{user?.phoneNumber}}</p>
+        </div>
+      </div>
+      <div *ngIf="submit">
+        <p class="checkout-details-body-header">Address</p>
+        <p class="checkout-details-body-body">{{address}}</p>
+      </div>
+      <form class="form" *ngIf="!submit" [formGroup]="addressForm"  (ngSubmit)="onSubmit()">
+        <label>Address</label>
+        <input
+          type="text"
+          class="form-control form__input"
+          id="address"
+          placeholder="address"
+          formControlName="address"
+          name="address"
+          [ngClass]="{ 'is-invalid': submit && f.address.errors }"
+          required
+        />
+        <button class="form-button">Submit</button>
+      </form>
+      <button  *ngIf="submit"  (click)="payment(total)" class="checkout-details-button">Checkout</button>
+    </div>
+    <div class="checkout-order">
+      <p class="checkout-header">Order Detail</p>
+      <ng-container *ngFor="let cart of carts">
+        <div class="checkout-order-item">
+          <img  class="checkout-order-item-image" src="{{ cart?.menu?.image?.URL }}" />
+          <div class="checkout-order-item-content">
+            <p class="checkout-order-item-content-header">{{cart?.menu?.name}}</p>
+            <p class="checkout-order-item-content-subheader">Qty: {{cart?.quantity}}</p>
+            <p class="checkout-order-item-content-body">Price: {{currency}}{{cart?.amount}}</p>
+          </div>
+        </div>
+        <div class="checkout-order-item-subtotal">
+          <p class="checkout-order-item-content-body">Subtotal:</p>
+          <p class="checkout-order-item-content-body" style="text-align:right">{{currency}}{{ calculate(cart.menu.price, cart.quantity) }}</p>
+        </div>
+      </ng-container>
+      <div class="checkout-order-total">
+        <div class="checkout-order-total-part">
+          <p class="checkout-order-item-content-body">Total</p>
+          <p class="checkout-order-item-content-body" style="text-align:right">{{currency}}{{total}}</p>
+        </div>
+        <div class="checkout-order-total-part">
+          <p class="checkout-order-item-content-body">Cumaltive Calories</p>
+          <p class="checkout-order-item-content-body" style="text-align:right">{{ calories }}{{ caloriesUnit }}</p>
+        </div>
+      </div>
+      <div  class="checkout-order-link">
+        <a class="checkout-order-link-body" [routerLink]="['/cart']">Modify Cart</a>
+      </div>
+    </div>
+  </div>
+  <div class="summary" *ngIf="isCheckout">
+    <ng-container *ngFor="let order of orders| paginate:paginationConfig;">
+      <div class="summary-order">
+        <img class="summary-order-left" src="{{order?.menu?.image?.URL}}" />
+        <div class="summary-order-right">
+          <div>
+            <p class="summary-order-right-subheader">{{order?.orderId}}</p>
+            <p class="summary-order-right-body">{{order?.menu?.name}}</p>
+            <p class="summary-order-right-subheader">{{order?.createdAt | date:'medium'}}</p>
+            <p class="summary-order-right-body">{{order?.status}}</p>
+            <p class="summary-order-right-body">{{order?.address}}</p>
+            <p class="summary-order-right-body">{{order?.calorie}}{{order?.calorieUnit}}</p>
+          </div>
+          <div class="summary-order-right-box">
+            <p class="summary-order-right-body">Qty: {{order?.quantity}}</p>
+            <p class="summary-order-right-body">Total: {{order?.currency}}{{order?.total}}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <p class="summary-order-right-body">Note: Daily calorie intake of {{calorieIntake}}{{caloriesUnit}} and you have {{subtract(totalCalories,calorieIntake)}}{{caloriesUnit}} to balance it up</p>
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+</div>

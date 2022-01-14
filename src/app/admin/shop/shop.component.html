@@ -1,0 +1,38 @@
+<div class="p-5">
+  <div class="container-fluid">
+    <div>
+      <table class="table" style="margin-bottom: 2rem">
+        <thead>
+          <tr class="text-center">
+            <th class="table-body">No</th>
+            <th class="table-body">Name</th>
+            <th class="table-body">Description</th>
+            <th class="table-body">Address</th>
+            <th class="table-body">PostCode</th>
+            <th class="table-body">Status</th>
+            <th class="table-body">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let shop of shops| paginate:paginationConfig; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ shop?.name }}</td>
+            <td>{{ shop?.description }}</td>
+            <td>{{ shop?.address }}</td>
+            <td>{{ shop?.postCode }}</td>
+            <td>{{ shop?.approvalStatus }}</td>
+            <td style="display: flex; justify-content: space-evenly;">
+              <button class="view-button" (click)="viewShop(shop?._id)">
+                View
+              </button>
+              <!-- <button class="decline-button" (click)="deleteShop(shop?._id)">
+                Delete
+              </button> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+  </div>
+</div>

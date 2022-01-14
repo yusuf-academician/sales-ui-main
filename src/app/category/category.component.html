@@ -1,0 +1,22 @@
+<div class="container">
+  <ng-container *ngFor="let categoryMenu of categoryMenus">
+    <div class="container-row">
+      <p class="container-header">{{categoryMenu?.category?.category}}</p>
+      <div class="container-row-box">
+        <ng-container *ngFor="let menu of categoryMenu?.menus; let i = index">
+          <div class="container-row-box-item" *ngIf="i<6" (click)="openPage('/menu', menu?._id)">
+            <img class="container-row-box-item-image" src='{{menu?.image?.URL}}' />
+            <div class="container-row-box-item-content">
+              <div class="container-row-box-item-content-upper">
+                <p class="container-row-box-item-content-header">{{menu?.name}}</p>
+                <p class="container-row-box-item-content-subheader">{{menu?.currency}}{{menu?.price}}</p>
+              </div>
+              <p class="container-row-box-item-content-body">{{menu?.shop?.name}}</p>
+              <p class="container-row-box-item-content-body">Category: {{menu?.category?.category}}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</div>

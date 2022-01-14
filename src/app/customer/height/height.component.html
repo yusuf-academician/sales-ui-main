@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="container-header">
+    <p class="container-header-body">Height Settings</p>
+  </div>
+  <div class="container-body">
+  <p class="container-body-body">Change Height</p>
+  <form
+    class="form"
+    autocomplete="off"
+    [formGroup]="changeHeight"
+    (ngSubmit)="onSaveHeight()"
+  >
+    <div class="form__group">
+      <label for="currentHeight" class="form__label">Current Height</label>
+      <input
+        class="form__input form-control"
+        id="currentHeight"
+        name="currentHeight"
+        placeholder="Current Height"
+        formControlName="currentHeight"
+        required
+        type="currentHeight"
+        [ngClass]="{ 'is-invalid': isHeight && g.currentHeight.errors }"
+      />
+      <div *ngIf="g.currentHeight.errors" class="invalid-feedback">
+        <div *ngIf="g.currentHeight.errors.required">current height is required</div>
+      </div>
+    </div>
+    <div class="form__group">
+      <label for="targetHeight" class="form__label">Target Height</label>
+      <input
+        class="form__input form-control"
+        id="targetHeight"
+        name="targetHeight"
+        placeholder="Target Height"
+        formControlName="targetHeight"
+        required
+        type="targetHeight"
+        [ngClass]="{ 'is-invalid': isHeight && g.targetHeight.errors }"
+      />
+      <div *ngIf="g.targetHeight.errors" class="invalid-feedback">
+        <div *ngIf="g.targetHeight.errors.required">target height is required</div>
+      </div>
+    </div>
+    <div class="form__group">
+      <label for="heightUnit" class="form__label">Height Unit</label>
+      <select
+        formControlName="heightUnit"
+        id="heightUnit"
+        class="form__input form-select form-control"
+        [ngClass]="{
+          'is-invalid': isHeight && g.heightUnit.errors
+        }"
+      >
+        <option selected>choose..</option>
+        <option *ngFor="let k of height" [ngValue]="k.key">
+          {{ k.value }}
+        </option>
+      </select>
+      <div *ngIf="g.heightUnit.errors" class="invalid-feedback">
+        <div *ngIf="g.heightUnit.errors.required">unit is required</div>
+      </div>
+    </div>
+    <button class="form-button">Save</button>
+  </form>
+</div>

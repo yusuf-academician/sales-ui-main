@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="container-header">
+    <p class="container-header-body">Orders</p>
+  </div>
+  <div class="container-body">
+    <div *ngIf="!orders.length">
+      <p  class="container-body-body" style="text-align: center;">No orders yet</p>
+    </div>
+    <ng-container *ngFor="let order of orders | paginate:paginationConfig;">
+      <div class="order">
+        <img class="order-left" src="{{order?.menu?.image?.URL}}" />
+        <div class="order-right">
+          <div>
+            <p class="order-right-subheader">{{order?.orderId}}</p>
+            <p class="order-right-body">{{order?.menu?.name}}</p>
+            <p class="order-right-subheader">{{order?.createdAt | date:'medium'}}</p>
+            <p class="order-right-body">Status: {{order?.status}}</p>
+            <p class="order-right-body">Address: {{order?.address}}</p>
+            <p class="order-right-body">Calories: {{order?.calorie}}{{order?.calorieUnit}}</p>
+          </div>
+          <div class="order-right-box">
+            <p class="order-right-body">Qty: {{order?.quantity}}</p>
+            <p class="order-right-body">Total: {{order?.currency}}{{order?.total}}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="container-header">
+    <p class="container-header-body">Account Settings</p>
+  </div>
+  <div class="container-body">
+    <p class="container-body-body">Change Weight</p>
+    <form class="form" autocomplete="off" [formGroup]="changeWeight" (ngSubmit)="onSaveWeight()">
+      <div class="form__group">
+        <label for="currentWeight" class="form__label">Current Weight</label>
+        <input class="form__input form-control" id="currentWeight" name="currentWeight" formControlName="currentWeight"
+          placeholder="Current Weight" required type="text"
+          [ngClass]="{ 'is-invalid': isWeight && e.currentWeight.errors }" />
+        <div *ngIf="e.currentWeight.errors" class="invalid-feedback">
+          <div *ngIf="e.currentWeight.errors.required">current weight is required</div>
+        </div>
+      </div>
+      <div class="form__group">
+        <label for="targetWeight" class="form__label">Target Weight</label>
+        <input class="form__input form-control" id="targetWeight" name="targetWeight" placeholder="Target Weight"
+          formControlName="targetWeight" required type="text"
+          [ngClass]="{ 'is-invalid': isWeight && e.targetWeight.errors }" />
+        <div *ngIf="e.targetWeight.errors" class="invalid-feedback">
+          <div *ngIf="e.targetWeight.errors.required">target weight is required</div>
+        </div>
+      </div>
+      <div class="form__group">
+        <label for="weightUnit" clas="form__label">Weight Unit</label>
+        <select formControlName="weightUnit" id="weightUnit" class="form__input form-select form-control" [ngClass]="{
+          'is-invalid': isWeight && e.weightUnit.errors
+        }">
+          <option selected>choose..</option>
+          <option *ngFor="let k of weight" [ngValue]="k.key">
+            {{ k.value }}
+          </option>
+        </select>
+        <div *ngIf="e.weightUnit.errors" class="invalid-feedback">
+          <div *ngIf="e.weightUnit.errors.required">unit is required</div>
+        </div>
+      </div>
+      <button class="form-button">Save</button>
+    </form>
+  </div>
+</div>

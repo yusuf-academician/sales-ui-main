@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="container-header">
+    <p class="container-header-body">Orders</p>
+  </div>
+  <div class="container-body">
+    <div class="badge-container">
+      <div *ngFor="let shop of shops">
+        <p class="badge" (click)="change(shop)">{{shop.name}}</p>
+      </div>
+    </div>
+    <div *ngIf="!orders.length">
+      <p  class="container-body-body" style="text-align: center;">No orders yet</p>
+    </div>
+    <ng-container *ngFor="let order of orders| paginate:paginationConfig">
+      <div class="order">
+        <img class="order-left" src="{{order?.menu?.image?.URL}}" />
+        <div class="order-right">
+          <div>
+            <p class="order-right-subheader">{{order?.orderId}}</p>
+            <p class="order-right-body">{{order?.user?.name}}</p>
+            <p class="order-right-subheader">{{order?.createdAt | date:'medium'}}</p>
+            <p class="order-right-body">{{order?.status}}</p>
+            <p class="order-right-body">{{order?.address}}</p>
+            <p class="order-right-body">{{order?.calorie}}{{order?.calorieUnit}}</p>
+            <div class="order-right-box">
+              <p class="order-right-body">Qty: {{order?.quantity}}</p>
+              <p class="order-right-body">Total: {{order?.currency}}{{order?.total}}</p>
+            </div>
+          </div>
+          <div class="order-right-button">
+            <button class="approve-button" (click)="approveOrder(order?._id)">Approve</button>
+            <button class="decline-button" (click)="cancelOrder(order?._id)">Decline</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+</div>

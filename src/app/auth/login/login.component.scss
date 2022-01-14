@@ -1,0 +1,69 @@
+@import '../../sass/text';
+@import '../../sass/button';
+@import '../../sass/form';
+
+.container{
+  width: 80%;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  @media only screen and (max-width: $tablet-big){
+    flex-direction: column;
+  }
+
+  &-right{
+    width: 50%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media only screen and (max-width: $tablet-big){
+      width: 100%;
+    }
+    @include button(#F05537, $white-color, #d1410c);
+    &-button{
+      border-radius: 10px;
+    }
+  }
+
+  &-left{
+    width: 48%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid;
+
+    @media only screen and (max-width: $tablet-big){
+      border-right: none;
+    }
+
+    &-row{
+      width:70%;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @include text(10px, center, 100%);
+  &-header{
+    line-height:0;
+    letter-spacing: 0.091em
+  }
+}
+
+.form{
+  margin-top: 1rem;
+
+  &__input{
+    width: 35rem;
+  }
+  &-button{
+    border-radius: 10px;
+    width: 16rem;
+  }
+}

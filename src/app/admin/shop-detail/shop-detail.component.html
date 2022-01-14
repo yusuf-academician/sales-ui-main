@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="detail">
+    <img class="detail-image"  src={{logo?.URL}} alt="Shop logo"/>
+    <div class="detail-content">
+      <p class="detail-content-header">{{shop?.name}}</p>
+      <p class="detail-content-subheader">Address: {{shop?.address}}</p>
+      <p class="detail-content-subheader">Post Code: {{shop?.postCode}}</p>
+      <div class="detail-content-mini">
+        <p class="detail-content-body">Created by: {{shop?.user?.name}}</p>
+        <p class="detail-content-body">{{shop?.createdAt}}</p>
+      </div>
+
+      <p class="detail-content-body">{{shop?.description}}</p>
+      <p class="detail-content-body">Creitificates</p>
+      <div class="detail-content-certificate">
+        <ng-container  *ngFor="let certificate of shop?.certificates">
+          <div style="display: flex; flex-direction: column;" *ngIf="certificate?.type != 'logo'">
+            <ng-container *ngIf="certificate?.type != 'document'">
+              <img class="detail-content-certificate-image" src="../../../assets/picture.png"/>
+              <a href={{certificate?.URL}} download>Download <span><fa-icon size="1x" [icon]="download"></fa-icon></span></a>
+            </ng-container>
+            <ng-container *ngIf="certificate?.type != 'image'">
+              <img class="detail-content-certificate-image" src="../../../assets/docs.png"/>
+              <a href={{certificate?.URL}} download>Download <span><fa-icon size="1x" [icon]="download"></fa-icon></span></a>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+      <div class="detail-content-btn_holder">
+        <button class="approve-button" (click)="onApprove()">Approve</button>
+        <button class="decline-button" (click)="deleteShop()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

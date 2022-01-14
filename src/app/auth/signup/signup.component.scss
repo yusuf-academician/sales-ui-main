@@ -1,0 +1,29 @@
+@import '../../sass/text';
+@import '../../sass/button';
+@import '../../sass/form';
+
+.container{
+  width: 70%;
+  margin: 0rem auto;
+  padding:1rem;
+
+  &-row{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include text(10px, center, 100%);
+  }
+}
+
+.form{
+  margin-bottom: 2rem;
+  &-button{
+  width: 40rem;
+  }
+  &__input{
+    width: 40rem;
+  }
+}

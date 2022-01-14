@@ -1,0 +1,47 @@
+<div class="p-3 container">
+    <div class="container-left">
+      <div class="container-left-box">
+        <div class="navbar-nav">
+          <li
+            class="nav-link container-left-box-nav"
+            [routerLink]="['/admin/profile']" [routerLinkActive]="'is-active'"
+          >
+            <a>Profile</a>
+          </li>
+          <li
+            class="nav-link container-left-box-nav"
+            [routerLink]="['/admin/shop']" [routerLinkActive]="'is-active'"
+          >
+            Shop
+          </li>
+          <li
+            class="nav-link container-left-box-nav"
+            [routerLink]="['/admin/category']" [routerLinkActive]="'is-active'"
+          >
+            Category
+          </li>
+          <li
+            class="nav-link container-left-box-nav"
+            [routerLink]="['/admin/ingredient']" [routerLinkActive]="'is-active'"
+          >
+            Ingredient
+          </li>
+          <li
+            class="nav-link container-left-box-nav"
+            [routerLink]="['/admin/orders']" [routerLinkActive]="'is-active'"
+          >
+            Orders
+          </li>
+          <li
+            class="nav-link container-left-box-nav"
+            [routerLink]="['/customer']" [routerLinkActive]="'is-active'"
+          >
+            Settings
+          </li>
+        </div>
+      </div>
+    </div>
+    <div class="container-right">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="container-item">
+    <img class="container-image" src="{{menu?.image?.URL}}" />
+    <div class="container-main">
+      <p class="container-subheader">{{menu?.shop?.name}}</p>
+      <p class="container-header">{{menu?.name}}</p>
+      <p class="container-body">{{menu?.currency}}{{menu?.price}}</p>
+      <p class="container-body">Description: {{menu?.description}}</p>
+      <p class="container-body">Category: {{menu?.category?.category}}</p>
+      <p class="container-body">
+        Ingredients: <span *ngFor="let ingredient of menu?.ingredients" style="text-transform: capitalize;">{{ingredient?.ingredient?.ingredient}}, </span>
+      </p>
+      <p class="container-body">Total Calories: {{totalCalories}}{{calorieUnit}}</p>
+      <button class="container-button" (click)="addCart(menu?._id)">Add to cart</button>
+    </div>
+  </div>
+  <div class="container-bottom">
+    <p class="container-bottom-header">Similar Menu</p>
+    <div class="container-bottom-box">
+      <ng-container *ngFor="let menu of others | slice:0:5">
+        <div class="container-bottom-box-item" (click)="openPage('/menu', menu?._id)">
+          <img class="container-bottom-box-item-image" src='{{menu?.image?.URL}}' />
+          <div class="container-bottom-box-item-content">
+            <div class="container-bottom-box-item-content-upper">
+              <p class="container-bottom-box-item-content-header">{{menu?.name}}</p>
+              <p class="container-bottom-box-item-content-subheader">{{menu?.currency}}{{menu?.price}}</p>
+            </div>
+            <p class="container-bottom-box-item-content-body">{{menu?.shop?.name}}</p>
+            <p class="container-bottom-box-item-content-body">Category: {{menu?.category?.category}}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

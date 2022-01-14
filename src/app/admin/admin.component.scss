@@ -1,0 +1,78 @@
+@import '../sass/text';
+@import '../sass/vairable';
+@import '../sass/main';
+
+.container{
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2rem auto;
+  @media only screen and (max-width: $tablet-big){
+    width: 100%;
+  }
+  @media only screen and (max-width: $mobile-large){
+    flex-direction: column;
+  }
+  @include text(10px, left, 100%);
+  &-body{
+    padding: 0 10px;
+  }
+  &-left{
+    width: 17%;
+    height: 24rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
+    @media only screen and (max-width: $mobile-large){
+      width: 37rem;
+      height: 5rem;
+    }
+
+    &-box{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      @media only screen and (max-width: $mobile-large){
+        flex-direction: row;
+      }
+
+      &-nav{
+        padding: 1rem;
+        background-color: white;
+        color: black;
+        width:100%;
+        cursor: pointer;
+
+        &:hover{
+          background-color:#F5F5F5;
+        }
+
+        &:active{
+          background-color: #EDEDED;
+        }
+      }
+
+    }
+  }
+
+  &-right{
+    width: 80%;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%);
+    @media only screen and (max-width: $mobile-large){
+      width: 100%;
+      margin-top: 3rem;
+    }
+  }
+}
+
+.navbar-nav{
+  @media only screen and (max-width: $mobile-large){
+    flex-direction: row;
+  }
+}
+
+.is-active{
+  background-color: #EDEDED;
+}

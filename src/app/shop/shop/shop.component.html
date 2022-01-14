@@ -1,0 +1,159 @@
+<div class="container">
+  <div class="container-header">
+    <p class="container-header-body">Shop Settings</p>
+  </div>
+  <div class="container-body">
+    <button class="container-button" (click)="addShop()">Create Shop</button>
+    <div>
+      <table class="table" style="margin-bottom: 2rem">
+        <thead>
+          <tr class="text-center">
+            <th class="table-body">No</th>
+            <th class="table-body">Name</th>
+            <th class="table-body">Address</th>
+            <th class="table-body">Post Code</th>
+            <th class="table-body">Approval Status</th>
+            <th class="table-body">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let shop of shops| paginate:paginationConfig; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ shop?.name }}</td>
+            <td>{{ shop?.address }}</td>
+            <td>{{ shop?.postCode }}</td>
+            <td>{{ shop?.approvalStatus }}</td>
+            <td style="display: flex; justify-content: space-evenly;">
+              <button
+                class="decline-button"
+                (click)="deleteShop(shop?._id)"
+              >
+                Delete
+              </button>
+              <button class="approve-button" (click)="getShop(shop?._id)">
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+      <div class="container-form" style="display: none" id="edit">
+        <p *ngIf="isCreate">Create Shop</p>
+        <p *ngIf="!isCreate">Edit Shop</p>
+        <form class="form" autocomplete="off" [formGroup]="shopForm">
+          <p *ngIf="isError">{{errorMsg}}</p>
+          <div class="form__group">
+            <label for="name" class="form__label">Name</label>
+            <input
+              type="text"
+              class="form-control form__input"
+              id="name"
+              name="name"
+              formControlName="name"
+              placeholder="name"
+              required
+              [ngClass]="{ 'is-invalid': submit && f.name.errors }"
+            />
+            <div *ngIf="f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">shop is required</div>
+            </div>
+          </div>
+          <div class="form__group">
+            <label for="description" class="form__label">Description</label>
+            <input
+              type="text"
+              class="form__input form-control"
+              id="description"
+              name="description"
+              formControlName="description"
+              placeholder="description"
+              required
+              [ngClass]="{ 'is-invalid': submit && f.description.errors }"
+            />
+            <div *ngIf="f.description.errors" class="invalid-feedback">
+              <div *ngIf="f.description.errors.required">description is required</div>
+            </div>
+          </div>
+          <div class="form__group col">
+            <label for="address" class="form__label">Address</label>
+            <input
+              type="text"
+              class="form__input form-control"
+              id="address"
+              name="address"
+              formControlName="address"
+              placeholder="address"
+              required
+              [ngClass]="{ 'is-invalid': submit && f.address.errors }"
+            />
+            <div *ngIf="f.address.errors" class="invalid-feedback">
+              <div *ngIf="f.address.errors.required">address is required</div>
+            </div>
+          </div>
+          <div class="form__group col">
+            <label for="postCode" class="form__label">Post Code</label>
+            <input
+              type="text"
+              class="form__input form-control"
+              id="postCode"
+              name="postCode"
+              formControlName="postCode"
+              placeholder="postCode"
+              required
+              [ngClass]="{ 'is-invalid': submit && f.postCode.errors }"
+            />
+            <div *ngIf="f.postCode.errors" class="invalid-feedback">
+              <div *ngIf="f.postCode.errors.required">post code is required</div>
+            </div>
+          </div>
+          <div class="form-group row mb-2">
+            <label for="exampleFormControlFile1">Logo</label>
+            <input
+              type="file"
+              #logo
+              class="form-control-file"
+              id="exampleFormControlFile1"
+              name="logo"
+              (change)="selectLogo($event)"
+              placeholder="logo"
+              required
+            />
+          </div>
+          <div class="form-group row mb-2">
+            <label for="image">Image</label>
+            <input
+              type="file"
+              class="form-control-file"
+              id="image"
+              name="image"
+              #image
+              (change)="selectImage($event)"
+              placeholder="image"
+              required
+            />
+          </div>
+          <div class="form-group row mb-2">
+            <label for="document">Document</label>
+            <input
+              type="file"
+              class="form-control-file"
+              id="document"
+              name="document"
+              (change)="selectDocument($event)"
+              placeholder="document"
+              #document
+              required
+            />
+          </div>
+          <button class="form-button" *ngIf="isCreate" (click)="onSubmit()">
+            Save
+          </button>
+          <button class="form-button" *ngIf="!isCreate" (click)="onEdit()">
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

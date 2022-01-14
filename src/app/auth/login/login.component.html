@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="container-left">
+    <p class="container-header">Login</p>
+    <div class="container-left-row">
+      <h3 class="container-body">Welcome back!</h3>
+
+      <!-- Sign In Form -->
+      <p *ngIf="isError" class="login-body">{{ errorMsg?.error?.msg }}</p>
+      <form class="form" [formGroup]="login">
+        <div class="form__group">
+          <label for="email" class="form__label">Email address</label>
+          <input
+            type="email"
+            class="form__input form-control"
+            placeholder="Email address"
+            id="email"
+            formControlName="email"
+            required
+            [ngClass]="{ 'is-invalid': submitLogin && f.password.errors }"
+          />
+          <div *ngIf="f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">email is required</div>
+            <div *ngIf="f.email.errors.email">Invalid email address</div>
+          </div>
+        </div>
+
+        <div class="form__group">
+          <label for="name" class="form__label">Password</label>
+          <input
+            type="password"
+            class="form__input form-control"
+            placeholder="Password"
+            formControlName="password"
+            id="password"
+            [ngClass]="{ 'is-invalid': submitLogin && f.password.errors }"
+            required
+          />
+          <div *ngIf="f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">password is required</div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <button class="form-button" (click)="signIn()">Log in</button>
+        </div>
+      </form>
+      <a class="container-body" [routerLink]="['/forgot-password']"
+        >Forgot password?</a
+      >
+    </div>
+  </div>
+  <div class="container-right">
+    <p class="container-header">Create your account</p>
+    <div>
+      <p class="container-body">
+        Create your account in just a few clicks! You can register either using
+        your e-mail address.
+      </p>
+    </div>
+    <div>
+      <button class="container-right-button" [routerLink]="['/signup']">
+        Create Account
+      </button>
+    </div>
+  </div>
+</div>

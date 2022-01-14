@@ -1,0 +1,71 @@
+@import '../sass/text';
+@import '../sass/main';
+
+.container {
+  padding: 3rem;
+  margin: 0 auto;
+
+  @include text(2px, left, 40rem);
+
+  &-header {
+    font-size: 2rem
+  }
+
+  &-row {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-box {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+
+      &-item {
+        width: 20rem;
+        height: 30rem;
+        display: flex;
+        flex-direction: column;
+        @media only screen and (max-width: $laptop-small){
+          width: 31rem;
+          margin-bottom: 2rem;
+        }
+        @media only screen and (max-width: $tablet-small){
+          width: 27rem;
+          margin-bottom: 3rem;
+        }
+
+        &-image {
+          height: 20rem;
+          object-fit: cover;
+        }
+
+        &-content {
+          display: flex;
+          flex-direction: column;
+
+          @include text(2px, left, 100%);
+          &-header{
+            line-height: normal;
+            letter-spacing: normal;
+            margin-bottom: 0;
+            font-size: 1.6rem;
+          }
+
+          &-upper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+
+  }
+}

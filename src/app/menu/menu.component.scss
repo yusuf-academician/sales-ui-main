@@ -1,0 +1,101 @@
+@import '../sass/text';
+@import '../sass/main';
+@import '../sass/button';
+
+.container {
+  padding: 3rem;
+  margin: 0 auto;
+  width: 80%;
+
+  &-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  @include text(1.6rem, left, 40rem);
+  &-subheader {
+    margin: 0;
+  }
+  @include button(#F05537, $white-color, #d1410c);
+
+  &-button {
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+
+  &-image {
+    width: 30rem;
+    height: 34rem;
+    border-radius: 5px;
+  }
+
+  &-main {
+    width: 73%;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+  &-bottom {
+    margin-top: 3rem;
+    @include text(2px, left, 10rem);
+
+    &-header {
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: normal;
+      font-size: 2rem;
+    }
+
+    &-box {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      &-item {
+        width: 20rem;
+        height: 30rem;
+        display: flex;
+        flex-direction: column;
+
+        @media only screen and (max-width: $laptop-small) {
+          width: 31rem;
+          margin-bottom: 2rem;
+        }
+
+        @media only screen and (max-width: $tablet-small) {
+          width: 27rem;
+          margin-bottom: 3rem;
+        }
+
+        &-image {
+          height: 20rem;
+        }
+
+        &-content {
+          display: flex;
+          flex-direction: column;
+
+          @include text(2px, left, 100%);
+
+          &-header {
+            line-height: normal;
+            letter-spacing: normal;
+            margin-bottom: 0;
+            font-size: 1.6rem;
+          }
+
+          &-upper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

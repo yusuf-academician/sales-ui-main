@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="container-header">
+    <p class="container-header-body">Ingredient Overview</p>
+  </div>
+  <div class="container-body">
+    <button class="container-button" (click)="addIngredient()">
+      Add Ingredient
+    </button>
+    <div>
+      <table class="table"  style="margin-bottom: 2rem">
+        <thead>
+          <tr class="text-center">
+            <th class="table-body">No</th>
+            <th class="table-body">Ingredient</th>
+            <th class="table-body">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="text-center"
+            *ngFor="let ingredient of ingredients| paginate:paginationConfig; let i = index"
+          >
+            <td>{{ i + 1 }}</td>
+            <td>{{ ingredient?.ingredient }}</td>
+            <td style="display: flex; justify-content: space-evenly;">
+              <button
+                class="decline-button"
+                (click)="deleteIngredient(ingredient?._id)"
+              >
+                Delete
+              </button>
+              <button
+                class="approve-button"
+                (click)="getIngredient(ingredient?._id)"
+              >
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+      <div style="margin-top: 3rem;display: none;" id="edit">
+        <p class="container-header-subheader" *ngIf="isCreate">Create Ingredient</p>
+        <p class="container-header-subheader" *ngIf="!isCreate">Edit Ingredient</p>
+        <form class="form" autocomplete="off" [formGroup]="ingredientForm">
+          <div class="form__group">
+            <label for="ingredient" class="form__label">Name</label>
+            <input
+              type="text"
+              class="form__input form-control"
+              id="ingredient"
+              name="ingredient"
+              formControlName="ingredient"
+              placeholder="ingredient"
+              required
+              [ngClass]="{ 'is-invalid': submit && f.ingredient.errors }"
+            />
+            <div *ngIf="f.ingredient.errors" class="invalid-feedback">
+              <div *ngIf="f.ingredient.errors.required">ingredient is required</div>
+            </div>
+          </div>
+          <button class="form-button" *ngIf="isCreate" (click)="onSubmit()">
+            Save
+          </button>
+          <button class="form-button" *ngIf="!isCreate" (click)="onEdit()">
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="container-header">
+    <p class="container-header-body">Account Overview</p>
+  </div>
+  <div class="container-body">
+    <div class="container-body-box">
+      <div class="container-body-box-header">
+        <p class="container-body-header">Account Detail</p>
+      </div>
+      <div class="container-body-box-body">
+        <p class="container-body-body">{{user?.name}}</p>
+        <p class="container-body-body">{{user?.email}}</p>
+        <p class="container-body-body">{{user?.phoneNumber}}</p>
+        <a class="container-body-body" [routerLink]="['/customer/change-password']">Change Password</a>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="container-body-box">
+      <div class="container-body-box-header">
+        <p class="container-body-header">Current Weight & Height</p>
+      </div>
+      <div class="container-body-box-body">
+        <p class="container-body-body">Weight: {{user?.currentWeight}}{{user?.weightUnit}}</p>
+        <p class="container-body-body">Height: {{user?.currentHeight}}{{user?.heightUnit}}</p>
+        <p class="container-body-body">BMI: {{user?.currentBMI}}</p>
+        <p class="container-body-body">BMI Category: {{user?.currentBMICategory}}</p>
+      </div>
+    </div>
+    <div class="container-body-box">
+      <div class="container-body-box-header">
+        <p class="container-body-header">Target Weight & Height</p>
+      </div>
+      <div class="container-body-box-body">
+        <p class="container-body-body">Weight: {{user?.targetWeight}}{{user?.weightUnit}}</p>
+        <p class="container-body-body">Height: {{user?.targetHeight}}{{user?.heightUnit}}</p>
+        <p class="container-body-body">BMI: {{user?.targetBMI}}</p>
+        <p class="container-body-body">BMI Category: {{user?.targetBMICategory}}</p>
+      </div>
+    </div>
+  </div>
+</div>

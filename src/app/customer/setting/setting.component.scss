@@ -1,0 +1,39 @@
+@import '../../sass/text';
+@import '../../sass/vairable';
+@import '../../sass/main';
+@import '../../sass/form';
+
+.container{
+  width: 100%;
+  padding: 0;
+
+  &-header{
+    border-bottom: 1px solid ;
+
+    @include text(5px, left, 100%);
+    &-body{
+      padding: 10px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: $black-color;
+    }
+  }
+
+  &-body{
+    padding: 2rem;
+    display: flex;
+    width: 40rem;
+    flex-direction: column;
+    @include text(5px, left, 100%);
+  }
+}
+
+.form{
+  margin-bottom: 2rem;
+  &-button{
+  width: 11rem;
+  }
+  &__input{
+    width: 36rem;
+  }
+}
